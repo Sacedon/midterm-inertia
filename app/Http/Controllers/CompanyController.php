@@ -10,9 +10,10 @@ class CompanyController extends Controller
     
     public function index() {
         sleep(3);
-        $companies = Company::orderBy('name')->paginate(5);
-
-        return inertia('companies/Index', compact('companies'));
+        return inertia('companies/Index', [
+            'companies' => Company::orderBy('name')->get()
+        ]);
+        
     }
 
     public function create() {

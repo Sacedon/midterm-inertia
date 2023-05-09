@@ -17,7 +17,9 @@ class MemberController extends Controller
     {
         sleep(3);
         return inertia('members/Index', [
-            'members' => Member::orderBy('last_name')->with('company')->paginate(5)
+            'members' => Member::orderBy('last_name')
+                        ->with('company')
+                        ->get()
         ]);
     }
 

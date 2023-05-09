@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr v-for="company of companies.data" :key="company.id" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+        <tr v-for="company of companies" :key="company.id" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
             <td class="w-full lg:w-auto p3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ company.name }}</td>
             <td class="w-full lg:w-auto p3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ company.type }}</td>
             <td class="w-full lg:w-auto p3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ company.address }}</td>
@@ -36,6 +36,6 @@
 import {Link} from '@inertiajs/inertia-vue3'
 
 defineProps({
-    'companies': Object
+    'companies': Array
 })
 </script>
