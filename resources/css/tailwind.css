@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.overlay {
+    background-color: #222;
+    opacity: 0.85;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @apply min-h-full min-w-full
+}
+
+
+.dialog-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @apply min-h-full min-w-full flex justify-center items-center
+}
+
+.dialog-wrapper .dialog {
+    @apply bg-gray-200 p-4 rounded-lg min-w-[300px] min-h-[300px]
+}

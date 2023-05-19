@@ -9,7 +9,7 @@
                 <Link class="px-3 mt-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 hover:bg-opacity-50" href="/">Home</Link>
                 <Link v-if="user" class="px-3 mt-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 hover:bg-opacity-50" href="/companies">Company</Link>
                 <Link v-if="user" class="px-3 mt-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 hover:bg-opacity-50" href="/members">Member</Link>
-                
+                <Link v-if="user" class="px-3 mt-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 hover:bg-opacity-50" href="/input">Input</Link>
             </nav>
             
             <div class="ml-4 flex items-baseline">

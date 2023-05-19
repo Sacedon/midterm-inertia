@@ -20,12 +20,15 @@
     </thead>
     <tbody>
         <tr v-for="member of members" :key="member.id" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-            <td class="w-full lg:w-auto p3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ member.last_name }}</td>
-            <td class="w-full lg:w-auto p3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ member.first_name }}</td>
-            <td class="w-full lg:w-auto p3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ member.designation }}</td>
-            <td class="w-full lg:w-auto p3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ member.company.name }}</td>
-            <td class="w-full lg:w-auto p3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                 <Link :href=" '/members/edit/' + member.id " class="bg-green-800 hover:bg-gray-700 text-white rounded px-3">Edit</Link>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ member.last_name }}</td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ member.first_name }}</td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ member.designation }}</td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">{{ member.company.name }}</td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+            <div class="flex justify-center">
+            <Link :href=" '/members/edit/' + member.id " class="bg-green-800 hover:bg-gray-700 text-white rounded px-3 py-1 mr-2">Edit</Link>
+            <button @click="deleteMember(member.id)" class="bg-red-800 hover:bg-gray-700 text-white rounded px-3 py-1">Delete</button>
+            </div>
             </td>
         </tr>
     </tbody>
@@ -33,11 +36,23 @@
 </template>
 <script setup>
 import {Link} from '@inertiajs/inertia-vue3'
+import { defineProps } from 'vue'
+import { route } from '@inertiajs/inertia'
+import { Inertia } from '@inertiajs/inertia';
+
 
 let props = defineProps({
     members: Array,
     companies: Array
 })
+
+const deleteMember = (memberId) => {
+  if (confirm('Are you sure you want to delete this member?')) {
+    $inertia.delete(route('members.destroy', memberId)).then(() => {
+      // Redirect to the members index page or display a success message
+    });
+  }
+}
 
 const closeNotif = () => {
     const toast = document.getElementById('toast-bottom-left');

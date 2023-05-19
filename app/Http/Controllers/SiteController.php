@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     public function home() {
-        sleep(3);
+        
         return inertia('Home',[
             'topics'=>[
                 'Laravel', 'Inertia', 'VueJS'
@@ -31,6 +31,10 @@ class SiteController extends Controller
            return redirect('/companies');
         else
            return back()->withErrors(['authentication'=>'Invalid username and/or password']);
+    }
+
+    public function index() {
+        return inertia('inputs/Index');
     }
 
     public function logout() {

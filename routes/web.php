@@ -28,6 +28,10 @@ Route::group(['middleware'=>'auth'], function(){
     Route::post('/companies',[CompanyController::class, 'store']);
     Route::get('/companies/edit/{company}', [CompanyController::class, 'edit']);
     Route::put('/companies/{company}', [CompanyController::class, 'update']);
+    Route::delete('/companies/{company}', [CompanyController::class, 'destroy']);
+    
+
+
 
     
     Route::get('/members', [MemberController::class, 'index']);
@@ -35,7 +39,9 @@ Route::group(['middleware'=>'auth'], function(){
     Route::post('/members', [MemberController::class, 'store']);
     Route::get('/members/edit/{member}', [MemberController::class, 'edit']);
     Route::put('/members/{member}', [MemberController::class, 'update']);
+    Route::delete('/members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
+    Route::resource('members', MemberController::class);
 
 
-    
+    Route::get('/input', [SiteController::class, 'index']);
 });

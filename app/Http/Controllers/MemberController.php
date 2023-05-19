@@ -15,7 +15,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        sleep(3);
+        
         return inertia('members/Index', [
             'members' => Member::orderBy('last_name')
                         ->with('company')
@@ -117,4 +117,10 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+     public function destroy(Member $member)
+    {
+        $member->delete();
+
+        return redirect('/members')->with('message', 'Member deleted successfully!');
+    }
 }
